@@ -10,11 +10,11 @@ cask "elgato-wave-link@beta" do
 
   livecheck do
     url "https://www.elgato.com/graphql?query=query%20contentJson(%24identifier%3A%5BString%5D%24contentType%3AString%24options%3AContentJsonOptionsInput)%7BcontentJson(identifiers%3A%24identifier%20contentType%3A%24contentType%20options%3A%24options)%7Bidentifier%20entries%7D%7D&operationName=contentJson&variables=%7B%22contentType%22%3A%22downloads%22%2C%22identifier%22%3A%5B%22downloads%22%5D%2C%22options%22%3A%7B%22level%22%3A1%7D%7D&locale=en-WW"
-    regex(/\\"wave-link-mac-beta\\":{\\"downloadURL\\":\\"https:\/\/[^\\]*(2\.\d+\.\d+\.\d+)\.pkg\\"/i)
+    regex(%r{\\"wave-link-mac-beta\\":{\\"downloadURL\\":\\"https:\/\/[^\\]*(2\.\d+\.\d+\.\d+)\.pkg\\"}i)
   end
 
   conflicts_with cask: [
-  	"elgato-wave-link"
+    "elgato-wave-link",
   ]
   depends_on macos: ">= :catalina"
 
