@@ -23,3 +23,13 @@ brew create --cask "https://edge.elgato.com/egc/macos/wavelink/2.0.2/WaveLink_2.
 ```
 
 I then modified the resulting file to be similar to the [`elgato-wave-link` Cask code](https://github.com/Homebrew/homebrew-cask/blob/dc4c192b59003a7ea44c646d6a500298d9bcc244/Casks/e/elgato-wave-link.rb).
+
+## How do I update this Tap?
+
+```zsh
+brew livecheck elgato-wave-link@beta
+curl -O https://edge.elgato.com/egc/macos/wavelink/2.0.3/WaveLink_2.0.3.3572.pkg
+shasum -a 256 WaveLink_2.0.3.3572.pkg
+```
+
+Then update the values in `Casks/elgato-wave-link@beta.rb`.
