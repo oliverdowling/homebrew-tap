@@ -1,21 +1,31 @@
 # Homebrew Tap
 
-This Tap is currently just for Elgato Wave Link 2 Beta.
+This Tap is currently just for mpv, but there is also a disabled Elgato Wave Link 2 Beta cask.
+
+The mpv cask is currently required in a private tap because it is not signed to meet Gatekeeper requirements.
 
 ## How do I install this Cask?
 
-`brew install --cask oliverdowling/tap/elgato-wave-link@beta`
+`brew install --cask oliverdowling/tap/mpv`
 
-Or `brew tap oliverdowling/tap` and then `brew install --cask elgato-wave-link@beta`.
+Or `brew tap oliverdowling/tap` and then `brew install --cask mpv`.
 
 Or, in a [`brew bundle`](https://github.com/Homebrew/homebrew-bundle) `Brewfile`:
 
 ```ruby
 tap "oliverdowling/tap"
-cask "elgato-wave-link@beta"
+cask "mpv"
 ```
 
+## How do I uninstall this cask?
+
+`brew uninstall --cask oliverdowling/tap/mpv`
+
+Or `brew uninstall --cask mpv` and then `brew untap oliverdowling/tap`.
+
 ## How did I create this Tap?
+
+*Note that these instructions were for my original Elgato Wave Link cask*
 
 ```zsh
 brew tap-new oliverdowling/homebrew-tap
@@ -33,3 +43,17 @@ shasum -a 256 WaveLink_2.0.3.3572.pkg
 ```
 
 Then update the values in `Casks/elgato-wave-link@beta.rb`.
+
+# Homebrew is deprecating all unsigned casks
+
+To allow an app from the command line that is unsigned:
+
+```zsh
+sudo xattr -rd com.apple.quarantine /Applications/<name>.app
+```
+
+To find apps with gatekeeper flags
+
+```zsh
+find /Applications ~/Applications -name "*.app" -prune -xattrname com.apple.quarantine 2>/dev/null
+```
