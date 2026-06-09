@@ -39,6 +39,7 @@ cask "mpv" do
   depends_on macos: :sonoma
 
   app "mpv.app"
+  binary "mpv.app/Contents/MacOS/mpv"
 
   zap trash: [
     "~/.config/mpv",
